@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ProductItems = ({ id, name, image, price }) => {
   const { currency } = useContext(ShopContext);
   return (
-    <Link className="text-gray-800 cursor-pointer" to={`/products${id}`}>
+    <Link className="text-gray-800 cursor-pointer" to={`/products/${id}`}>
       <div className="overflow-hidden">
         <img
           className="hover:scale-125 transitio ease-in-out h-[20rem] "

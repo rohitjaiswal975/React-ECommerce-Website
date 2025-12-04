@@ -9,13 +9,14 @@ import women7 from "./women7image.jpg"
 import men8 from "./men8image.jpg"
 import men9 from "./men9image.jpg"
 
+
 const products = [
     {
         id: "1",
         name: "Hanes womens Ecosmart Full Zip Fleece Hoodie",
         description: "Carbon emissions from the lifecycle of this product were measured, reduced and offset.",
         price: 400,
-        image: [hoddie1],
+        image: [hoddie1,hoddie1,hoddie1],
         category: "Women",
         Subcategory: "Winterwear",
         sizes: ["S", "M", "L"],

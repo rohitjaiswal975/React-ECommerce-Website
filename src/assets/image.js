@@ -11,6 +11,7 @@ import support from "./supportsicons.webp"
 import exchange from "./exchange.jpg"
 import dropdown from "./dropdown2image.png" 
 
+
  const image = {
     Logo,
     profile,
@@ -23,7 +24,7 @@ import dropdown from "./dropdown2image.png"
     truck,
     support,
     exchange,
-    dropdown
+    dropdown,
 }
 
 export default image
