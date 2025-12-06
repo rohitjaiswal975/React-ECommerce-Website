@@ -3,6 +3,7 @@ import { ShopContext } from "../Contex/ShopContex";
 import TitleSection from "../Compontes/TitleSection";
 import image from "../assets/image";
 
+
 const Cart = () => {
   const { cartItems, currency, products } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
@@ -24,44 +25,56 @@ const Cart = () => {
   }, [cartItems]);
 
   return (
-    <section className="border-t pt-15">
-      <div className="text-2xl mb-3">
+    <section className="border-t pt-16">
+      <div className="text-3xl mb-6">
         <TitleSection text1={"YOUR"} text2={"CART"} />
       </div>
-      <div>
+
+      <div className="space-y-6">
         {cartData.map((item, id) => {
-          const productsData = products.find(
-            (product) => product.id === item.id
-          );
+          const productsData = products.find((product) => product.id === item.id);
 
           return (
             <div
               key={id}
-              className="py-5 border-t border-b text-gray-900 grid grid-cols-[4fr_0.5fr] sm:grid-cols-[4fr_2fr-0.5fr] items-center gap-5"
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-5 grid grid-cols-[4fr_1fr] sm:grid-cols-[4fr_2fr_1fr] items-center gap-6 border border-gray-200"
             >
-              <div className="flex items-start gap-6">
+              <div className="flex items-start gap-5">
                 <img
-                  className="w-15 sm:w-20"
+                  className="w-16 sm:w-20 rounded-xl shadow"
                   src={productsData.image[0]}
                   alt="products"
                 />
-                <div>
-                  <p className="text-xs sm:text-lg font-semibold">
+
+                <div className="space-y-2">
+                  <p className="text-base sm:text-lg font-semibold text-gray-800">
                     {productsData.name}
                   </p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <p className="font-bold">
+
+                  <div className="flex items-center gap-3">
+                    <p className="text-lg font-bold text-gray-900">
                       {currency}
                       {productsData.price}
                     </p>
-                    <p className="px-2 sm:px-3 sm:py-1 border bg-amber-200">
+                    <p className="px-3 py-1 text-sm rounded-full border bg-amber-300/40 border-amber-300 font-medium">
                       {item.size}
                     </p>
                   </div>
                 </div>
               </div>
-              <input className="border-black max-w-10 sm:max-w-20 pz-1 sm:px-2 py1" type="number" min={1} defaultValue={item.quantity} />
-              <img src={image.deleted} className="w-4 mr-4 sm:w-5 cursor-pointer" alt="bin"/>
+
+              <input
+                className="border border-gray-400 rounded-lg w-14 sm:w-20 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                type="number"
+                min={1}
+                defaultValue={item.quantity}
+              />
+
+              <img
+                src={image.deleted}
+                className="w-5 sm:w-6 cursor-pointer hover:scale-110 transition-transform"
+                alt="bin"
+              />
             </div>
           );
         })}
