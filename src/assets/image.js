@@ -10,6 +10,7 @@ import truck from "./vector-truck-icon.jpg"
 import support from "./supportsicons.webp"
 import exchange from "./exchange.jpg"
 import dropdown from "./dropdown2image.png" 
+import deleted from "./deleted-icon.png"
 
 
  const image = {
@@ -25,6 +26,7 @@ import dropdown from "./dropdown2image.png"
     support,
     exchange,
     dropdown,
+    deleted,
 }
 
 export default image

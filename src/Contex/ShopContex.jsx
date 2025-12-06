@@ -1,29 +1,76 @@
-import { createContext, useState } from "react";
-import products from "../assets/Proucts"; 
+import { createContext, useEffect, useState } from "react";
+import products from "../assets/Proucts";
+import { toast } from "react-toastify";
 
-export const ShopContext = createContext(); 
+export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
-    const currency = "$";
-    const delivery_fees = 20;
-    const [search,setsearch] = useState("")
-    const [showSearch , setShowSearch] = useState(false)
+  const currency = "$";
+  const delivery_fees = 20;
+  const [search, setsearch] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+  const [cartItems, setcartItems] = useState({});
 
-    const value = {
-        products,
-        currency,
-        delivery_fees,
-        search,
-        setsearch,
-        showSearch,
-        setShowSearch,
-    };
+  const addToCart = ({ itemsId, size }) => {
+    let cartData = structuredClone(cartItems);
 
-    return (
-        <ShopContext.Provider value={value}>
-            {props.children}
-        </ShopContext.Provider>
-    );
+    if (!size) {
+      toast.error("Oops! You forgot to choose a size 😊");
+      return;
+    }
+
+    if (cartData[itemsId]) {
+      if (cartData[itemsId][size]) {
+        cartData[itemsId][size] = cartData[itemsId][size] + 1;
+      } else {
+        cartData[itemsId][size] = 1;
+      }
+    } else {
+      cartData[itemsId] = {};
+      cartData[itemsId][size] = 1;
+    }
+
+    setcartItems(cartData);
+  };
+
+  // useEffect(() => {
+  //     console.log(cartItems)
+  // },[cartItems])
+
+  const getCartCounter = () => {
+    let totalCount = 0;
+
+    for (const items in cartItems) {
+      for (const item in cartItems[items]) {
+        try {
+          if (cartItems[items][item] > 0) {
+            totalCount = totalCount + cartItems[items][item];
+          }
+        } catch (err) {
+            
+        }
+      }
+    }
+
+    return totalCount;
+  };
+
+  const value = {
+    products,
+    currency,
+    delivery_fees,
+    search,
+    setsearch,
+    showSearch,
+    setShowSearch,
+    cartItems,
+    addToCart,
+    getCartCounter,
+  };
+
+  return (
+    <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>
+  );
 };
 
 export default ShopContextProvider;

@@ -13,7 +13,7 @@ const Navbar = () => {
   ];
 
   const [show, setShow] = useState(false);
-  const {setShowSearch} = useContext(ShopContext)
+  const {setShowSearch , getCartCounter} = useContext(ShopContext)
 
   return (
     <nav className="flex items-center justify-between py-4 px-4 sm:px-6 bg-gray-100 text-gray-800 shadow-sm">
@@ -57,10 +57,10 @@ const Navbar = () => {
         </div>
 
         {/* Cart */}
-        <Link to="/cart" className="relative">
+        <Link to="/cart"  className="relative">
           <img src={image.cart} className="w-5 min-w-5" alt="" />
-          <p className="absolute right-[-6px] bottom-[-6px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
-            10
+          <p  className="absolute right-[-6px] bottom-[-6px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
+            {getCartCounter()}
           </p>
         </Link>
 
