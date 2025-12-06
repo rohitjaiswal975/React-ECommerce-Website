@@ -3,9 +3,9 @@ import { ShopContext } from "../Contex/ShopContex";
 import TitleSection from "../Compontes/TitleSection";
 import image from "../assets/image";
 
-
 const Cart = () => {
-  const { cartItems, currency, products } = useContext(ShopContext);
+  const { cartItems, currency, products, updateQuantity } =
+    useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
@@ -32,7 +32,9 @@ const Cart = () => {
 
       <div className="space-y-6">
         {cartData.map((item, id) => {
-          const productsData = products.find((product) => product.id === item.id);
+          const productsData = products.find(
+            (product) => product.id === item.id
+          );
 
           return (
             <div
@@ -68,12 +70,18 @@ const Cart = () => {
                 type="number"
                 min={1}
                 defaultValue={item.quantity}
+                onChange={(e) =>
+                  e.target.value === "" || e.target.value === "0"
+                    ? null
+                    : updateQuantity(item.id, item.size, Number(e.target.value))
+                }
               />
 
               <img
                 src={image.deleted}
                 className="w-5 sm:w-6 cursor-pointer hover:scale-110 transition-transform"
                 alt="bin"
+                onClick={() => updateQuantity(item.id, item.size, 0)}
               />
             </div>
           );
