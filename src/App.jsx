@@ -4,7 +4,7 @@ import Collecttion from "./Pages/Collecttion"
 import About from "./Pages/About"
 import Contact from "./Pages/Contact"
 import Products from "./Pages/Products"
-import DisplayOrder from "./Pages/DisplayOrder"
+import Order from "./Pages/Order"
 import Login from "./Pages/Login"
 import PlaceOrder from "./Pages/PlaceOrder"
 import Cart from "./Pages/Cart"
@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/collection" element={<Collecttion />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products/:productsId" element={<Products />} />
-        <Route path="/order" element={<DisplayOrder />} />
+        <Route path="/order" element={<Order />} />
         <Route path="/login" element={<Login />} />
         <Route path="placeorder" element={<PlaceOrder />} />
         <Route path="cart" element={<Cart />} />

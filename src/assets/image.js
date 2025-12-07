@@ -11,7 +11,8 @@ import support from "./supportsicons.webp"
 import exchange from "./exchange.jpg"
 import dropdown from "./dropdown2image.png" 
 import deleted from "./deleted-icon.png"
-
+import razopay from "./razorpay-logo.png"
+import strip from "./stripe-logo.png"
 
  const image = {
     Logo,
@@ -27,6 +28,8 @@ import deleted from "./deleted-icon.png"
     exchange,
     dropdown,
     deleted,
+    razopay,
+    strip,
 }
 
 export default image
