@@ -13,6 +13,7 @@ import dropdown from "./dropdown2image.png"
 import deleted from "./deleted-icon.png"
 import razopay from "./razorpay-logo.png"
 import strip from "./stripe-logo.png"
+import about from "./about-img.png"
 
  const image = {
     Logo,
@@ -30,6 +31,7 @@ import strip from "./stripe-logo.png"
     deleted,
     razopay,
     strip,
+    about
 }
 
 export default image

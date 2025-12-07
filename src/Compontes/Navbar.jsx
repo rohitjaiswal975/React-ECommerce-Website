@@ -13,13 +13,17 @@ const Navbar = () => {
   ];
 
   const [show, setShow] = useState(false);
-  const {setShowSearch , getCartCounter} = useContext(ShopContext)
+  const { setShowSearch, getCartCounter } = useContext(ShopContext);
 
   return (
     <nav className="flex items-center justify-between py-4 px-4 sm:px-6 bg-gray-100 text-gray-800 shadow-sm">
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2 select-none">
-        <img src={logo} alt="logo" className="w-10 h-10 rounded-full object-cover" />
+        <img
+          src={logo}
+          alt="logo"
+          className="w-10 h-10 rounded-full object-cover"
+        />
         <h1 className="text-2xl font-bold tracking-wide">LOGO</h1>
       </Link>
 
@@ -30,7 +34,9 @@ const Navbar = () => {
             <NavLink
               to={item.path}
               className={({ isActive }) =>
-                `flex flex-col items-center transition ${isActive ? "text-black" : "text-gray-700"}`
+                `flex flex-col items-center transition ${
+                  isActive ? "text-black" : "text-gray-700"
+                }`
               }
             >
               {item.name}
@@ -42,24 +48,36 @@ const Navbar = () => {
 
       {/* Right Icons */}
       <div className="flex items-center gap-6">
-        <img onClick={() => setShowSearch(true)} src={image.search} className="w-5 cursor-pointer" />
+        <img
+          onClick={() => setShowSearch(true)}
+          src={image.search}
+          className="w-5 cursor-pointer"
+        />
 
         {/* Profile Dropdown */}
         <div className="group relative">
-          <img src={image.profile} className="w-5 cursor-pointer" />
+          <Link to="/login">
+            <img src={image.profile} className="w-5 cursor-pointer" />
+          </Link>
           <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
             <div className="flex flex-col gap-2 w-36 py-3 px-4 bg-white text-gray-600 shadow-lg rounded-xl">
-              <p className="cursor-pointer hover:text-black transition">My Profile</p>
-              <p className="cursor-pointer hover:text-black transition">Orders</p>
-              <p className="cursor-pointer hover:text-black transition">Log Out</p>
+              <p className="cursor-pointer hover:text-black transition">
+                My Profile
+              </p>
+              <p className="cursor-pointer hover:text-black transition">
+                Orders
+              </p>
+              <p className="cursor-pointer hover:text-black transition">
+                Log Out
+              </p>
             </div>
           </div>
         </div>
 
         {/* Cart */}
-        <Link to="/cart"  className="relative">
+        <Link to="/cart" className="relative">
           <img src={image.cart} className="w-5 min-w-5" alt="" />
-          <p  className="absolute right-[-6px] bottom-[-6px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
+          <p className="absolute right-[-6px] bottom-[-6px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
             {getCartCounter()}
           </p>
         </Link>
